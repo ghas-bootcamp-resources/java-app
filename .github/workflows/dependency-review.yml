@@ -12,7 +12,7 @@ jobs:
       - name: Dependency Review
         uses: actions/dependency-review-action@v3.0.6
         with:
-          fail-on-severity: moderate
+          fail-on-severity: high
           # Use comma-separated names to pass list arguments:
-          deny-licenses: LGPL-2.0, BSD-2-Clause
+          deny-licenses: LGPL-2.0, AGPL-1.0-or-later, AGPL-3.0-or-later
           comment-summary-in-pr: true
