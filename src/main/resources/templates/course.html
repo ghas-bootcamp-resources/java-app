@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <title th:text="${course.title}">Course</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+      background: #f6f7f8;
+      color: #202124;
+    }
+
+    main {
+      max-width: 840px;
+      margin: 0 auto;
+    }
+
+    section {
+      background: #fff;
+      border: 1px solid #d7dbe0;
+      border-radius: 6px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    input,
+    textarea,
+    button {
+      font: inherit;
+      padding: .5rem;
+      margin: .2rem 0;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .comment {
+      border-top: 1px solid #e5e7eb;
+      padding: .75rem 0;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <p><a href="/">Back to courses</a></p>
+    <section>
+      <h1 th:text="${course.title}"></h1>
+      <p th:text="${course.summary}"></p>
+      <p><strong>Instructor:</strong> <span th:text="${course.instructor}"></span></p>
+    </section>
+    <section>
+      <h2>Comments</h2>
+      <article class="comment" th:each="comment : ${comments}">
+        <strong th:text="${comment.author}"></strong>
+        <div th:utext="${comment.body}"></div>
+      </article>
+      <form th:action="@{/courses/{id}/comments(id=${course.id})}" method="post">
+        <input name="author" placeholder="Author">
+        <textarea name="body" placeholder="Comment"></textarea>
+        <button type="submit">Add comment</button>
+      </form>
+    </section>
+  </main>
+</body>
+
+</html>
