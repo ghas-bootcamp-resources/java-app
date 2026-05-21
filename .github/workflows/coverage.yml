@@ -59,7 +59,7 @@ jobs:
                   name: cobertura-report
 
             - name: Upload coverage report
-              uses: code-quality-org/upload-code-coverage-action@main
+              uses: actions/upload-code-coverage@v1
               with:
                   file: cobertura.xml
                   language: Java
