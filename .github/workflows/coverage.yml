@@ -50,8 +50,7 @@ jobs:
         runs-on: ubuntu-latest
         permissions:
             contents: read
-            # TODO: Reduce to `code-quality: write` once that permission scope ships.
-            security-events: write
+            code-quality: write
         steps:
             - name: Download coverage artifact
               uses: actions/download-artifact@v4
